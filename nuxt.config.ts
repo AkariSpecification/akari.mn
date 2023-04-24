@@ -13,7 +13,24 @@ export default defineNuxtConfig({
         lang: "ja",
         prefix: "og: https://ogp.me/ns#",
       },
+      title: "AkariSpecification - Port Intel x86-64 intrinsic function to RISC-V or ARM",
+      // titleTemplate: "%s - AkariSpecification",
+        link: [
+        {
+            rel: "icon",
+            type: "image/x-icon",
+            href: "/favicon.ico",
+        },
+    ],
       meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        /* description */
+        {
+            hid: "description",
+            name: "description",
+            content: "Port Intel x86-64 intrinsic function to RISC-V or ARM",
+        },
         {
           property: "og:url",
           content: "https://akarispecification.github.io/akari.mn/akari.mn",
@@ -30,8 +47,7 @@ export default defineNuxtConfig({
         },
         {
           property: "og:site_name",
-          content:
-            "AkariSpecification",
+          content: "AkariSpecification",
         },
         {
           property: "og:image",
