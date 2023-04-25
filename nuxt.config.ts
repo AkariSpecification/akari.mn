@@ -7,11 +7,6 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  runtimeConfig: {
-    public: {
-      baseURL: process.env.BASE_URL || "https://akarispecification.github.io/akari.mn",
-    },
-  },
   app: {
     head: {
       htmlAttrs: {
