@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    baseURL: "https://akarispecification.github.io/akari.mn",
+    baseURL: "/akari.mn",
     head: {
       htmlAttrs: {
         lang: "ja",
