@@ -7,8 +7,8 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  router: { base: '/akari.mn/' },
   app: {
+    baseURL: "https://akarispecification.github.io/akari.mn",
     head: {
       htmlAttrs: {
         lang: "ja",
