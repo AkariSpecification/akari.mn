@@ -7,6 +7,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  router: { base: '/akari.mn/' },
   app: {
     head: {
       htmlAttrs: {

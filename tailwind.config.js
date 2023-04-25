@@ -2,7 +2,6 @@
 module.exports = {
   content: [
     "./app.vue",
-    "./assets/**/*.{css}",
     "./components/*.{vue,js}",
     "./components/**/*.{vue,js}",
     "./pages/*.vue",
