@@ -7,6 +7,9 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  plugins: [
+    "@/plugins/prism",
+  ],
   app: {
     baseURL: "/akari.mn",
     head: {

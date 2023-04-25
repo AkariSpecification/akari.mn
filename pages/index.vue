@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import Prism from "@/plugins/prism"
 
 export default defineComponent({
   name: "index",
@@ -11,7 +12,9 @@ export default defineComponent({
   methods: {},
   computed: {},
   created() {},
-  mounted() {},
+  mounted() {
+    Prism.highlightAll();
+  },
   destroyed() {},
 });
 </script>
@@ -27,19 +30,48 @@ export default defineComponent({
         </div>
     </div>
     <!-- メイン 単一ページ -->
-    <h1 class="text-2xl font-bold ml-8">Our website is currently under construction. Please come back again. </h1>
+    <h1 class="text-2xl font-bold mx-8 my-8">Our website is currently under construction. Please come back again. </h1>
     <div class="flex">
-        <div class="flex flex-col w-full h-screen bg-gray-white">
-            <div class="flex flex-col">
-                <div class="flex flex-row justify-between items-center h-16 bg-gray-white">
-                    <div class="flex">
-                        <p></p>
-                    </div>
-                </div>
+        <div class="flex flex-col w-full h-screen bg-gray-white mx-12">
+            <p>We are researching way to port Intel x86-64 intrinsic functions to RISC-V or ARM.</p>
+            <p>This research is solution to CPU architecture dependency problem.</p>
+            <p>Intel x86-64 is CISC(Complex Instruction Set Computer) and very long history.</p>
+            <p>Once the code runs on x86-64 computer it must run forever.So it carries a lot of heritage.</p>
+            <p>CISC like Intel is converting CISC variable length instruction to RISC like micro code.</p>
+            <p>So it need converting circuit and die size becomes large.</p>
+            <p>So there is overhead like consumption of electricity becomes large.</p>
+            <p>On the other hand, ARM and RISC-V is same as means of if code runs these machine, it must run forever but Instruction Set is simple and it can use relatively new technology.</p>
+            <p>But the NO 1 of market share of super computer or PC or server is Intel because many Linux application is made for Intel.</p>
+            <p>So if application that runs only on Intel can run on RISC-V or ARM by very optimized way,it may be very advantagerous.</p>
+            <br/>
+            <p>So if we want to run application for Intel x86-64 on RISC-V or ARM by very optimized way, it need to port Intel intrinsic function to RISC-V or ARM.</p>
+            <p>the document shown below are very helpful.</p>
+            <div class="flex flex-row my-6 text-blue-700">
+                <a href="https://openpowerfoundation.org/specifications/vectorintrinsicportingguide/"><p>https://openpowerfoundation.org/specifications/vectorintrinsicportingguide/</p></a>
             </div>
+            <p>Intel Intrinsic API provide Instruction Set Extension Intel continue to provide.</p>
+            <p>SIMD(Single Instruction Stream Multiple Data Stream) is included.</p>
+            <p>To port Intel x86-64 function to RISC-V like IBM POWER takes specific wrap structure like below.</p>
+            <pre><code class="language-c">extern __inline __m128d __attribute__((__gnu_inline__, __always_inline__,__artificial__))
+_mm_add_pd (__m128d __A, __m128d __B)
+{
+   return (__m128d) ((__v2df)__A + (__v2df)__B);
+}</code></pre>
+            <p>_mm_add_pd is Intel Intrinsic function and this function add __A and __B.</p>
+            <p>Intel Intrinsic function runs RISC-V like IBM POWER by adding this code.</p>
+            <p>We show other example.</p>
+            <pre><code class="language-c">extern __inline __m128d __attribute__((__gnu_inline__, __always_inline__,__artificial__))
+_mm_set1_pd (double __F)
+{
+   return __extension__ (__m128d){ __F, __F };
+}</code></pre>
+            <p>this copy __F value and store to __m128m by vector format.</p>
+            <br/>
+            <p>I am planning to make test framework to content of these wrap structure.</p>
+            <p>These port must be validated and make sure it is correct.</p>
+            <p>So we input Intel and RISC-V like IBM POWER or ARM the same value and make sure output is same.</p>
         </div>
     </div>
-
 </div>
 </template>
 <style lang="scss" scoped>
