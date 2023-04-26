@@ -26,13 +26,14 @@ export default defineComponent({
   <!-- 表題 -->
     <div class="flex flex-row justify-between items-center bg-gray-200">
         <div class="flex my-12">
-            <h1 class="text-2xl font-bold ml-8">AkariSpecification</h1>
+          <img src="~/assets/images/icon.png" class="w-12 h-12 ml-8"/>
+          <h1 class="text-2xl font-bold ml-4 leading-loose">AkariSpecification</h1>
         </div>
     </div>
     <!-- メイン 単一ページ -->
-    <h1 class="text-2xl font-bold mx-8 my-8">Our website is currently under construction. Please come back again. </h1>
-    <div class="flex">
-        <div class="flex flex-col w-full h-screen bg-gray-white mx-12">
+    <img src="~/assets/images/title.png" class="w-1/2 mx-auto my-12"/>
+    <div class="flex mx-12">
+        <div class="flex flex-col w-full h-screen bg-gray-white w-full">
             <p>We are researching way to port Intel x86-64 intrinsic functions to RISC-V or ARM.</p>
             <p>This research is solution to CPU architecture dependency problem.</p>
             <p>Intel x86-64 is CISC(Complex Instruction Set Computer) and very long history.</p>
@@ -46,13 +47,13 @@ export default defineComponent({
             <br/>
             <p>So if we want to run application for Intel x86-64 on RISC-V or ARM by very optimized way, it need to port Intel intrinsic function to RISC-V or ARM.</p>
             <p>the document shown below are very helpful.</p>
-            <div class="flex flex-row my-6 text-blue-700">
+            <div class="flex flex-row my-6 text-blue-700 w-full break-words break-all">
                 <a href="https://openpowerfoundation.org/specifications/vectorintrinsicportingguide/"><p>https://openpowerfoundation.org/specifications/vectorintrinsicportingguide/</p></a>
             </div>
             <p>Intel Intrinsic API provide Instruction Set Extension Intel continue to provide.</p>
             <p>SIMD(Single Instruction Stream Multiple Data Stream) is included.</p>
             <p>To port Intel x86-64 function to RISC-V like IBM POWER takes specific wrap structure like below.</p>
-            <pre><code class="language-c">extern __inline __m128d __attribute__((__gnu_inline__, __always_inline__,__artificial__))
+            <pre style="min-height: 160px;"><code class="language-c">extern __inline __m128d __attribute__((__gnu_inline__, __always_inline__,__artificial__))
 _mm_add_pd (__m128d __A, __m128d __B)
 {
    return (__m128d) ((__v2df)__A + (__v2df)__B);
@@ -60,7 +61,7 @@ _mm_add_pd (__m128d __A, __m128d __B)
             <p>_mm_add_pd is Intel Intrinsic function and this function add __A and __B.</p>
             <p>Intel Intrinsic function runs RISC-V like IBM POWER by adding this code.</p>
             <p>We show other example.</p>
-            <pre><code class="language-c">extern __inline __m128d __attribute__((__gnu_inline__, __always_inline__,__artificial__))
+            <pre style="min-height: 160px;"><code class="language-c">extern __inline __m128d __attribute__((__gnu_inline__, __always_inline__,__artificial__))
 _mm_set1_pd (double __F)
 {
    return __extension__ (__m128d){ __F, __F };
@@ -70,6 +71,21 @@ _mm_set1_pd (double __F)
             <p>I am planning to make test framework to content of these wrap structure.</p>
             <p>These port must be validated and make sure it is correct.</p>
             <p>So we input Intel and RISC-V like IBM POWER or ARM the same value and make sure output is same.</p>
+          <!-- Developer -->
+          <div class="w-full">
+            <h2 class="text-2xl font-bold my-12">Developer</h2>
+            <ul class="list-disc list-inside">
+              <li><a href="https://github.com/daisukeokaoss" class="text-blue-600">Oka Daisuke</a></li>
+              <li><a href="https://github.com/takahashi-akari" class="text-blue-600">Takahashi Akari</a></li>
+            </ul>
+          </div>
+          <!-- footer -->
+          <div class="flex flex-row justify-between items-center bg-white">
+            <div class="flex my-12">
+              <img src="~/assets/images/icon.png" class="w-12 h-12 ml-8"/>
+              <h1 class="text-2xl font-bold ml-4 leading-loose">AkariSpecification</h1>
+            </div>
+          </div>
         </div>
     </div>
 </div>
