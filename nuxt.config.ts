@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     "@/plugins/prism",
   ],
   app: {
-    baseURL: "/akari.mn",
     head: {
       htmlAttrs: {
         lang: "ja",
@@ -58,7 +57,7 @@ export default defineNuxtConfig({
         },
         {
           property: "og:url",
-          content: "https://akarispecification.github.io/akari.mn/akari.mn",
+          content: "https://akari.mn",
         },
         { property: "og:type", content: "website" },
         {
@@ -77,7 +76,7 @@ export default defineNuxtConfig({
         {
           property: "og:image",
           content:
-            "https://akarispecification.github.io/akari.mn/images/title.png",
+            "https://akari.mn/images/title.png",
         },
         {
           name: "msapplication-TileColor",

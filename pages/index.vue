@@ -75,8 +75,17 @@ _mm_set1_pd (double __F)
           <div class="w-full">
             <h2 class="text-2xl font-bold my-12">Developer</h2>
             <ul class="list-disc list-inside">
-              <li><a href="https://github.com/daisukeokaoss" class="text-blue-600">Oka Daisuke</a></li>
-              <li><a href="https://github.com/takahashi-akari" class="text-blue-600">Takahashi Akari</a></li>
+              <li class="my-4">
+                <a href="https://github.com/daisukeokaoss" class="text-blue-600">Oka Daisuke</a>
+                <p>I name this test framework as Akari. Meaning Light in Japanese.
+                  <a class="text-blue-600" href="https://www.slideshare.net/OkaDaisuke/testing-framework-to-port-and-optimize-simd-library-to-open-power-systems">https://www.slideshare.net/OkaDaisuke/testing-framework-to-port-and-optimize-simd-library-to-open-power-systems</a>
+                </p>
+                <p>I presented OpenPower summit 2021 NA.</p>
+              </li>
+              <li>
+                <a href="https://github.com/takahashi-akari" class="text-blue-600">Takahashi Akari</a>
+                <p>Architect and Programmer.</p>
+              </li>
             </ul>
           </div>
           <!-- footer -->
