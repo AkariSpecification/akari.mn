@@ -84,7 +84,7 @@ export default defineComponent({
               <span class="font-bold">Detail</span>:
             </p>
             <span class="ml-4">
-            <textarea class="my-2 mx-4 resize-none border-none" readonly="readonly">{{ infomation?.detail }}</textarea>
+            <textarea class="w-4/5 my-2 mx-4 resize-none border-none" readonly="readonly">{{ infomation?.detail }}</textarea>
             </span>
             <p class="my-2 mx-4">
               <span class="font-bold">Link</span>: <a class="text-blue-600 hover:text-blue-500" :href="infomation?.link">{{ infomation?.link }}</a>
