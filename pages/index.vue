@@ -60,7 +60,7 @@ export default defineComponent({
       });
       setTimeout(() => {
         this.onResize()
-      }, 500);
+      }, 1000);
     });
   },
   destroyed() {},
