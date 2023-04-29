@@ -2,15 +2,44 @@
 import { defineComponent, ref } from "vue";
 import Prism from "@/plugins/prism";
 
+type Infomation = {
+  title: string;
+  date: string;
+  link: string;
+  detail: string;
+};
+type date = {
+  infomation: Infomation | null;
+};
 export default defineComponent({
   name: "index",
   components: {},
-  data() {
-    return {};
+  data(): date {
+    return {
+      infomation: null,
+    };
   },
   methods: {},
   computed: {},
-  created() {},
+  async created() {
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("X-MICROCMS-API-KEY", "oPpkFOlO4UTAs7pAgGwmcszRKsfMkL0Pg2eS");
+    const res = await fetch("https://akarimn.microcms.io/api/v1/akari", {
+      method: "GET",
+      headers: headers,
+    })
+    this.infomation = await res.json();
+    if (this.infomation) {
+      const date = new Date(this.infomation.date);
+      const year = date.getFullYear();
+      const month = ("0" + (date.getMonth() + 1)).slice(-2);
+      const day = ("0" + date.getDate()).slice(-2);
+      const hour = ("0" + date.getHours()).slice(-2);
+      const minute = ("0" + date.getMinutes()).slice(-2);
+      this.infomation.date = `${year}/${month}/${day} ${hour}:${minute}`;
+    }
+  },
   mounted() {
     Prism.highlightAll();
   },
@@ -37,7 +66,31 @@ export default defineComponent({
       </div>
       <div class="md:px-8">
         <!-- メイン 単一ページ -->
-        <img src="~/assets/images/title.png" class="w-1/2 mx-auto my-12 rounded-2xl" />
+        <img
+          src="~/assets/images/title.png"
+          class="w-1/2 mx-auto my-12 rounded-2xl"
+        />
+        <!-- Infomation -->
+        <h2 class="text-2xl font-bold my-6 mx-4">Infomation</h2>
+        <div class="flex flex-col">
+          <div class="flex flex-col mx-6">
+            <p class="my-2 mx-4">
+              <span class="font-bold">Date</span>: {{ infomation?.date }}
+            </p>
+            <p class="my-2 mx-4">
+              <span class="font-bold">Title</span>: {{ infomation?.title }}
+            </p>
+            <p class="mt-1 mb-0 mx-4">
+              <span class="font-bold">Detail</span>:
+            </p>
+            <span class="ml-4">
+            <textarea class="my-2 mx-4 resize-none border-none" readonly="readonly">{{ infomation?.detail }}</textarea>
+            </span>
+            <p class="my-2 mx-4">
+              <span class="font-bold">Link</span>: <a class="text-blue-600 hover:text-blue-500" :href="infomation?.link">{{ infomation?.link }}</a>
+            </p>
+          </div>
+        </div>
         <hr class="fancy-hr px-10" />
         <h2 class="text-2xl font-bold my-6 mx-4">Introduction</h2>
         <div class="flex mx-6">
