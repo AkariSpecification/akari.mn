@@ -37,7 +37,7 @@ export default defineComponent({
       </div>
       <div class="md:px-8">
         <!-- メイン 単一ページ -->
-        <img src="~/assets/images/title.png" class="w-1/2 mx-auto my-12" />
+        <img src="~/assets/images/title.png" class="w-1/2 mx-auto my-12 rounded-2xl" />
         <hr class="fancy-hr px-10" />
         <h2 class="text-2xl font-bold my-6 mx-4">Introduction</h2>
         <div class="flex mx-6">
@@ -108,6 +108,7 @@ export default defineComponent({
               specific wrap structure like below.
             </p>
             <pre
+              class="rounded-2xl"
               style="min-height: 160px"
             ><code class="language-c">extern __inline __m128d __attribute__((__gnu_inline__, __always_inline__,__artificial__))
 _mm_add_pd (__m128d __A, __m128d __B)
@@ -124,6 +125,7 @@ _mm_add_pd (__m128d __A, __m128d __B)
             </p>
             <p>We show other example.</p>
             <pre
+              class="rounded-2xl"
               style="min-height: 160px"
             ><code class="language-c">extern __inline __m128d __attribute__((__gnu_inline__, __always_inline__,__artificial__))
 _mm_set1_pd (double __F)
