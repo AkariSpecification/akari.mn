@@ -68,10 +68,10 @@ export default defineComponent({
         <!-- メイン 単一ページ -->
         <img
           src="~/assets/images/title.png"
-          class="w-1/2 mx-auto my-12 rounded-2xl"
+          class="w-1/2 mx-auto my-8 rounded-2xl"
         />
         <!-- Infomation -->
-        <h2 class="text-2xl font-bold my-6 mx-4">Infomation</h2>
+        <h2 class="text-2xl font-bold my-4 mx-4">Infomation</h2>
         <div class="flex flex-col">
           <div class="flex flex-col mx-6">
             <p class="my-2 mx-4">
