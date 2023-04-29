@@ -19,16 +19,27 @@ export default defineComponent({
       infomation: null,
     };
   },
-  methods: {},
+  methods: {
+    onResize() {
+      const textarea = this.$refs.textarea as HTMLTextAreaElement;
+      // textareaの高さを取得
+      const height = textarea.scrollHeight;
+      // textareaの高さを設定
+      textarea.style.height = height + "px";
+    }
+  },
   computed: {},
   async created() {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
-    headers.append("X-MICROCMS-API-KEY", "oPpkFOlO4UTAs7pAgGwmcszRKsfMkL0Pg2eS");
+    headers.append(
+      "X-MICROCMS-API-KEY",
+      "oPpkFOlO4UTAs7pAgGwmcszRKsfMkL0Pg2eS"
+    );
     const res = await fetch("https://akarimn.microcms.io/api/v1/akari", {
       method: "GET",
       headers: headers,
-    })
+    });
     this.infomation = await res.json();
     if (this.infomation) {
       const date = new Date(this.infomation.date);
@@ -42,6 +53,15 @@ export default defineComponent({
   },
   mounted() {
     Prism.highlightAll();
+    this.$nextTick(() => {
+      // window onresize
+      window.addEventListener("resize", () => {
+        this.onResize()
+      });
+      setTimeout(() => {
+        this.onResize()
+      }, 500);
+    });
   },
   destroyed() {},
 });
@@ -52,7 +72,7 @@ export default defineComponent({
     href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
     rel="stylesheet"
   />
-  <div class="w-full h-full">
+  <div ref="wrapper" class="w-full h-full">
     <!-- use tailwindcss -->
     <div class="flex flex-col h-screen">
       <!-- 表題 -->
@@ -80,14 +100,22 @@ export default defineComponent({
             <p class="my-2 mx-4">
               <span class="font-bold">Title</span>: {{ infomation?.title }}
             </p>
-            <p class="mt-1 mb-0 mx-4">
-              <span class="font-bold">Detail</span>:
-            </p>
+            <p class="mt-1 mb-0 mx-4"><span class="font-bold">Detail</span>:</p>
             <span class="ml-4">
-            <textarea class="w-4/5 my-2 mx-4 resize-none border-none" readonly="readonly">{{ infomation?.detail }}</textarea>
+              <textarea
+                ref="textarea"
+                class="w-4/5 my-2 mx-4 resize-none border-none"
+                readonly="readonly"
+                >{{ infomation?.detail }}</textarea
+              >
             </span>
             <p class="my-2 mx-4">
-              <span class="font-bold">Link</span>: <a class="text-blue-600 hover:text-blue-500" :href="infomation?.link">{{ infomation?.link }}</a>
+              <span class="font-bold">Link</span>:
+              <a
+                class="text-blue-600 hover:text-blue-500"
+                :href="infomation?.link"
+                >{{ infomation?.link }}</a
+              >
             </p>
           </div>
         </div>
